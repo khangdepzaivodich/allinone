@@ -79,7 +79,7 @@ function Sidebar() {
 
         {/* Men's Fashion */}
         <NavigationMenuItem className="hover:shadow-md hover:bg-gray-100">
-          <NavigationMenuTrigger className="px-6">
+          <NavigationMenuTrigger className="pr-9 pl-3">
             Men's Fashion
           </NavigationMenuTrigger>
           <NavigationMenuContent>
