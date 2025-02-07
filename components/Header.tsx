@@ -4,7 +4,7 @@ import { CiHeart } from "react-icons/ci";
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useState } from "react";
-
+import Link from "next/link";
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
@@ -23,16 +23,16 @@ function Header() {
           } md:opacity-100 ${menuOpen ? "flex" : "hidden"} md:flex list-none`}
         >
           <li className="cursor-pointer text-xl hover:scale-125 hover:underline transition-all duration-150 ">
-            Home
+            <Link href="/">Home</Link>
           </li>
           <li className="cursor-pointer text-xl hover:scale-125 hover:underline transition-all duration-150 ">
-            Contact
+            <Link href="/contact">Contact </Link>
           </li>
           <li className="cursor-pointer text-xl hover:scale-125 hover:underline transition-all duration-150 ">
-            About
+            <Link href="/about">About</Link>
           </li>
           <li className="cursor-pointer text-xl hover:scale-125 hover:underline transition-all duration-150 ">
-            Sign up
+            <Link href="/sign-up">Sign up</Link>
           </li>
         </ul>
         <div

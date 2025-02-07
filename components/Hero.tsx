@@ -12,18 +12,26 @@ function Hero() {
     "/img5.jpg",
   ];
   const [imgNum, setImgNum] = useState(0);
-
+  const [isEnter, setIsEnter] = useState(false);
   const changeImage = (num: number) => {
     setImgNum(num);
   };
+  const handleMouseEnter = () => {
+    setIsEnter(true);
+  };
+  const handleMouseLeave = () => {
+    setIsEnter(false);
+  };
   useEffect(() => {
-    const id = setInterval(() => {
-      setImgNum((prevNum) => {
-        if (prevNum === 4) return 0;
-        return prevNum + 1;
-      });
-    }, 3000);
-    return () => clearInterval(id);
+    if (!isEnter) {
+      const id = setInterval(() => {
+        setImgNum((prevNum) => {
+          if (prevNum === 4) return 0;
+          return prevNum + 1;
+        });
+      }, 3000);
+      return () => clearInterval(id);
+    }
   });
   return (
     <div className="flex">
@@ -36,10 +44,18 @@ function Hero() {
               src={src}
               width={892}
               height={344}
-              alt="Iphone 16"
-              className={`absolute inset-0 w-full h-full object-cover object-[40%_20%] transition-all duration-500 ${
+              alt="product's images"
+              className={`absolute inset-0 w-full h-full object-cover ${
+                imgNum === 3
+                  ? "object-[40%_40%]"
+                  : imgNum === 4
+                  ? "object-[50%_60%]"
+                  : "object-[40%_20%]"
+              } transition-all duration-500 ${
                 imgNum === index ? "opacity-100" : "opacity-0"
               }`}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             />
           ))}
         </div>
